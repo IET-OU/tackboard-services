@@ -1,0 +1,11 @@
+#<FilesMatch "\.(json)$">
+#AddDefaultCharset UTF-8
+#DefaultLanguage en-US
+#SetHandler application/x-httpd-php
+#</FilesMatch>
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !/index.php
+RewriteCond %{REQUEST_URI} !/stanbol
+RewriteRule ^(.*)$ index.php/$1 [L]
+
