@@ -50,7 +50,8 @@ class AbstractTackboardAction extends AbstractRest {
 		if($stmt == null){
 			throw new Exception($mysqli == null ? 'Undefined connection' : $mysqli->error);
 		}
-		$stmt->bind_param('ss', $this->getUserId(), $signature);
+		$i = $this->getUserId();
+		$stmt->bind_param('ss', $i, $signature);
 		if (!$stmt->execute()) {
 			$stmt->close();
 			error_internal_server_error( "Execute failed: (" . $stmt->errno . ") " . $stmt->error);
@@ -260,7 +261,8 @@ class AbstractTackboardAction extends AbstractRest {
 		$q = 'SELECT LABEL, SIGNATURE, CREATED FROM BOARD WHERE CREATEDBY = ? ORDER BY CREATED DESC';
 		$mysqli = $this->getConnection();
 		$stmt = $mysqli->prepare($q);
-		$stmt->bind_param('s', $this->getUserId());
+		$i = $this->getUserId();
+		$stmt->bind_param('s', $i);
 		if (!$stmt->execute()) {
 			$stmt->close();
 			error_internal_server_error( "Execute failed: (" . $stmt->errno . ") " . $stmt->error);

@@ -8,7 +8,7 @@
 // 	echo 'Forbidden: user not authenticated or user not allowed';
 // 	exit();
 // }
-//$_SERVER['PHP_AUTH_USER'] = 'ed4565';
+$_SERVER['PHP_AUTH_USER'] = 'ed4565';
 date_default_timezone_set('Europe/London');
 define('ACTIONS_HOME', dirname(__FILE__) . '/actions');
 include_once dirname(__FILE__) . '/rip/index.php';
